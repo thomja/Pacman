@@ -12,12 +12,12 @@ public class MoveScript : MonoBehaviour {
 		myBoxes[1] = travDirectionBox[1].GetComponent<BoxChecker>();
 		myBoxes[2] = travDirectionBox[2].GetComponent<BoxChecker>();
 		myBoxes[3] = travDirectionBox[3].GetComponent<BoxChecker>();
-		speed = 0.04f;
+		speed = 0.1f;
 	}
 
 	void speedReset(){
 		if(speed == 0f){
-			speed = 0.04f;
+			speed = 0.1f;
 		}
 	}
 
@@ -45,7 +45,7 @@ public class MoveScript : MonoBehaviour {
 	void Update () {
 		if(myDirection == 0){
 
-		} else {
+		} else if(myDirection != 6) {
 			transform.Translate(new Vector3(0f,0f,1f) * speed);
 			myDirection = ChangeDirection(myDirection);
 		}
@@ -64,8 +64,10 @@ public class MoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision myColl){
+		Debug.Log (myBoxes[0].name);
 		if(myColl.gameObject.tag == "Wall" && myBoxes[0].isColliding > 0){
 			speed = 0f;
+			myDirection = 6;
 		}
 	}
 }
