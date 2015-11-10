@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoxChecker.cs" />
+     <Compile Include="Assets\Scripts\CameraShader.cs" />
      <Compile Include="Assets\Scripts\FoodEatingScript.cs" />
      <Compile Include="Assets\Scripts\MoveScript.cs" />
      <Compile Include="Assets\Scripts\NavmeshTarget.cs" />
