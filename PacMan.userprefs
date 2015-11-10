@@ -6,7 +6,7 @@
       <File FileName="Assets\Scripts\NavmeshTarget.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\FoodEatingScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PillSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BoxChecker.cs" Line="20" Column="36" />
+      <File FileName="Assets\Scripts\BoxChecker.cs" Line="20" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
