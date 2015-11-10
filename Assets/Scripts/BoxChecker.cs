@@ -9,16 +9,21 @@ public class BoxChecker : MonoBehaviour {
 	void Start () {
 		myMoveScript = Pacman.GetComponent<MoveScript>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
 	}
 	void OnTriggerExit(){
 		isColliding -= 1;
+		Debug.Log ("Running");
+		if(isColliding <= 0){
+			myMoveScript.moveForward = true;
+		}
 	}
 
 	void OnTriggerEnter(Collider Col){
 		isColliding += 1;
+		myMoveScript.moveForward = false;
 	}
 }

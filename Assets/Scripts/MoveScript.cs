@@ -4,7 +4,7 @@ using System.Collections;
 public class MoveScript : MonoBehaviour {
 	public int myDirection = 0;
 	public float speed = 1;
-	private bool hasStarted;
+	public bool moveForward;
 	// Use this for initialization
 	void Start () {
 
@@ -13,11 +13,11 @@ public class MoveScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(hasStarted == true){
+		if(moveForward == true){
 			transform.Translate(new Vector3(0f,0f,1f) * speed);
 		}
 		if(Input.GetKeyDown(KeyCode.W)){
-			hasStarted = true;
+			moveForward = true;
 		}
 		if(Input.GetKeyDown(KeyCode.S)){
 			transform.Rotate(0f, 180f, 0f);
