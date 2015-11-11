@@ -3,27 +3,29 @@ using System.Collections;
 
 public class BoxChecker : MonoBehaviour {
 	public int isColliding = 0;
-	public GameObject Pacman;
-	MoveScript myMoveScript;
+	public bool boxClear;
 	// Use this for initialization
 	void Start () {
-		myMoveScript = Pacman.GetComponent<MoveScript>();
+		boxClear = true;
 	}
 
 	// Update is called once per frame
 	void Update () {
 
 	}
-	void OnTriggerExit(){
-		isColliding -= 1;
-		Debug.Log ("Running");
-		if(isColliding <= 0){
-			myMoveScript.moveForward = true;
+	void OnTriggerExit(Collider Col){
+		if(Col.gameObject.tag != "Terrain"){
+			isColliding -= 1;
+			if(isColliding == 0){
+				boxClear = true;
+			}
 		}
 	}
 
 	void OnTriggerEnter(Collider Col){
-		isColliding += 1;
-		myMoveScript.moveForward = false;
+		if(Col.gameObject.tag != "Terrain"){
+			isColliding += 1;
+			boxClear = false;
+		}
 	}
 }
