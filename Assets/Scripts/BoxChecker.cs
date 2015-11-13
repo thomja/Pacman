@@ -14,7 +14,7 @@ public class BoxChecker : MonoBehaviour {
 
 	}
 	void OnTriggerExit(Collider Col){
-		if(Col.gameObject.tag != "Terrain"){
+		if(Col.gameObject.tag != "Terrain" && Col.gameObject.tag != "Pill"){
 			isColliding -= 1;
 			if(isColliding == 0){
 				boxClear = true;
@@ -23,7 +23,7 @@ public class BoxChecker : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider Col){
-		if(Col.gameObject.tag != "Terrain"){
+		if(Col.gameObject.tag != "Terrain" && Col.gameObject.tag != "Pill"){
 			isColliding += 1;
 			boxClear = false;
 		}
