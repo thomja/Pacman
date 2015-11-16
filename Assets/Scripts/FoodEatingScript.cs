@@ -3,9 +3,11 @@ using System.Collections;
 
 public class FoodEatingScript : MonoBehaviour {
 	private int yAxis;
+	public GlobalPointScript pointScript;
+	public int scoreAmount;
 	// Use this for initialization
 	void Start () {
-
+		pointScript = GameObject.Find("_SCRIPTS").GetComponent<GlobalPointScript>();
 	}
 	
 	// Update is called once per frame
@@ -16,6 +18,7 @@ public class FoodEatingScript : MonoBehaviour {
 	void OnTriggerEnter(Collider myColl){
 		Debug.Log (myColl.gameObject.name);
 		if(myColl.gameObject.name == "Eater"){
+			pointScript.score = pointScript.score + scoreAmount;
 			Destroy(gameObject);
 		}
 	}
