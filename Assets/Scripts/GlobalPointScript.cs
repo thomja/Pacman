@@ -4,6 +4,7 @@ using System.Collections;
 public class GlobalPointScript : MonoBehaviour {
 	public GUIStyle style;
 	public int score = 0;
+	public int lives = 3;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,6 +17,6 @@ public class GlobalPointScript : MonoBehaviour {
 
 	void OnGUI()
 	{
-		GUI.Label(new Rect(0, 0, 200, 50), "Poäng: " + score, style);        
+		GUI.Label(new Rect(0, 0, 200, 50), "Poäng: " + score + " and " + lives + "lives", style);        
 	}
 }

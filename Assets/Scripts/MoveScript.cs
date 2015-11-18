@@ -5,10 +5,14 @@ public class MoveScript : MonoBehaviour {
 	public int myDirection = 0;
 	public float speed = 1;
 	public bool moveForward;
+	public GlobalPointScript pointScript;
 	public GameObject[] myBoxes;
 	public BoxChecker[] myBoxCheckers;
+	public Vector3 startingPosition;
 	// Use this for initialization
 	void Start () {
+		startingPosition = transform.position;
+		pointScript = GameObject.Find("_SCRIPTS").GetComponent<GlobalPointScript>();
 		myBoxCheckers[0] = myBoxes[0].GetComponent<BoxChecker>();
 		myBoxCheckers[1] = myBoxes[1].GetComponent<BoxChecker>();
 		myBoxCheckers[2] = myBoxes[2].GetComponent<BoxChecker>();
@@ -43,6 +47,14 @@ public class MoveScript : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.D)){
 			myDirection = 1;
 			CheckTurn();
+		}
+	}
+
+	void OnCillisionEnter(Collision Coll){
+		if(Coll.gameObject.tag == "Ghost"){
+			Debug.Log("Here");
+			pointScript.lives -= 1;
+			transform.position = startingPosition;
 		}
 	}
 }
