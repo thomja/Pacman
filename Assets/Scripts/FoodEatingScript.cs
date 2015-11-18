@@ -5,6 +5,7 @@ public class FoodEatingScript : MonoBehaviour {
 	private int yAxis;
 	public GlobalPointScript pointScript;
 	public int scoreAmount;
+	public int localScore = 0;
 	// Use this for initialization
 	void Start () {
 		pointScript = GameObject.Find("_SCRIPTS").GetComponent<GlobalPointScript>();
@@ -19,6 +20,11 @@ public class FoodEatingScript : MonoBehaviour {
 		Debug.Log (myColl.gameObject.name);
 		if(myColl.gameObject.name == "Eater"){
 			pointScript.score = pointScript.score + scoreAmount;
+			localScore += scoreAmount;
+			if(localScore >= 500){
+				pointScript.lives += 1;
+				localScore = 0;
+			}
 			Destroy(gameObject);
 		}
 	}
