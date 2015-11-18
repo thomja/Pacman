@@ -5,14 +5,18 @@ public class MoveScript : MonoBehaviour {
 	public int myDirection = 0;
 	public float speed = 1;
 	public bool moveForward;
+	public GameObject _SCRIPT;
 	public GlobalPointScript pointScript;
 	public GameObject[] myBoxes;
 	public BoxChecker[] myBoxCheckers;
-	public Vector3 startingPosition;
+	public float[] startCoords;
+	public GameObject[] Ghosts;
 	// Use this for initialization
 	void Start () {
-		startingPosition = transform.position;
-		pointScript = GameObject.Find("_SCRIPTS").GetComponent<GlobalPointScript>();
+		startCoords[0] = transform.position.x;
+		startCoords[1] = transform.position.y;
+		startCoords[2] = transform.position.z;
+		pointScript = _SCRIPT.GetComponent<GlobalPointScript>();
 		myBoxCheckers[0] = myBoxes[0].GetComponent<BoxChecker>();
 		myBoxCheckers[1] = myBoxes[1].GetComponent<BoxChecker>();
 		myBoxCheckers[2] = myBoxes[2].GetComponent<BoxChecker>();
@@ -50,11 +54,15 @@ public class MoveScript : MonoBehaviour {
 		}
 	}
 
-	void OnCillisionEnter(Collision Coll){
+	void OnTriggerEnter(Collider Coll){
 		if(Coll.gameObject.tag == "Ghost"){
-			Debug.Log("Here");
 			pointScript.lives -= 1;
-			transform.position = startingPosition;
+			transform.position = new Vector3(startCoords[0],startCoords[1],startCoords[2]);
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+			moveForward = false;
 		}
 	}
+
+
+
 }
