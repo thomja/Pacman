@@ -17,8 +17,7 @@ public class FoodEatingScript : MonoBehaviour {
 		transform.Rotate(0,1.5f,0);
 	}
 	void OnTriggerEnter(Collider myColl){
-		Debug.Log (myColl.gameObject.name);
-		if(myColl.gameObject.name == "Eater"){
+		if(myColl.gameObject.name == "Eater" || myColl.gameObject.name == "FrontBox"){
 			pointScript.score = pointScript.score + scoreAmount;
 			localScore += scoreAmount;
 			if(localScore >= 500){
