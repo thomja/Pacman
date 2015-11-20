@@ -1,19 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Move : MonoBehaviour
 {
-    static int score;
+    private int points;
+    public Text pointText;
     private Rigidbody Ball;
     private GameObject Pill;
     private GameObject Fruit;
-    public GUIStyle Style = null;
+    static bool gameover;
 
-    void Start()
+    void Awake()
     {
+        gameover = false;
+        points = 0;
         Ball = GetComponent<Rigidbody>();
+        SetpointText();
     }
-
+    void SetpointText()
+    {
+        pointText.text = "Spelare 1:   " + points.ToString();
+    }
+   
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -24,24 +33,32 @@ public class Move : MonoBehaviour
             Ball.AddForce(-transform.right * 20);
         if (Input.GetKey(KeyCode.RightArrow))
             Ball.AddForce(transform.right * 20);
+        if (points == 1510)
+        {
+            gameover = true;
+        }
     }
-
+    void Update()
+    {
+        if (gameover)
+        {
+            Application.LoadLevel("Highscore");
+        }
+    }
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Pill")
         {
-            score += 10;
+            points += 10;
             Destroy(col.gameObject);
+            SetpointText();
+
         }
         if (col.gameObject.tag == "Fruit")
         {
-            score += 500;
+            points += 500;
             Destroy(col.gameObject);
+            SetpointText();
         }
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 200, 50), "Spelare 1 " + score, Style);        
     }
 }
