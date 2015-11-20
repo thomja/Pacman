@@ -6,11 +6,13 @@ public class MoveScript : MonoBehaviour {
 	public int myDirection = 0;
 	public float speed = 1;
 	public bool moveForward;
+	public GameObject _SCRIPT;
 	public GlobalPointScript pointScript;
 	public bool hasPower;
 	public GameObject[] myBoxes;
 	public BoxChecker[] myBoxCheckers;
 	public float[] startCoords;
+<<<<<<< HEAD
 	public GUIStyle style;
 	public string failString;
 	// Use this for initialization
@@ -20,6 +22,15 @@ public class MoveScript : MonoBehaviour {
 		startCoords[1] = transform.position.y;
 		startCoords[2] = transform.position.z;
 		pointScript = GameObject.Find("_SCRIPTS").GetComponent<GlobalPointScript>();
+=======
+	public GameObject[] Ghosts;
+	// Use this for initialization
+	void Start () {
+		startCoords[0] = transform.position.x;
+		startCoords[1] = transform.position.y;
+		startCoords[2] = transform.position.z;
+		pointScript = _SCRIPT.GetComponent<GlobalPointScript>();
+>>>>>>> origin/Thomas_Branch
 		myBoxCheckers[0] = myBoxes[0].GetComponent<BoxChecker>();
 		myBoxCheckers[1] = myBoxes[1].GetComponent<BoxChecker>();
 		myBoxCheckers[2] = myBoxes[2].GetComponent<BoxChecker>();
@@ -72,6 +83,7 @@ public class MoveScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider Coll){
+<<<<<<< HEAD
 		if(Coll.gameObject.tag == "Ghost" && this.gameObject.name == "Pacman"){
 			pointScript.lives -= 1;
 			transform.position = new Vector3(startCoords[0], startCoords[1], startCoords[2]);
@@ -98,4 +110,16 @@ public class MoveScript : MonoBehaviour {
 	{
 		GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 50), failString, style);        
 	}
+=======
+		if(Coll.gameObject.tag == "Ghost"){
+			pointScript.lives -= 1;
+			transform.position = new Vector3(startCoords[0],startCoords[1],startCoords[2]);
+			transform.rotation = Quaternion.Euler(0, 0, 0);
+			moveForward = false;
+		}
+	}
+
+
+
+>>>>>>> origin/Thomas_Branch
 }

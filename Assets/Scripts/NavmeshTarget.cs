@@ -7,12 +7,21 @@ public class NavmeshTarget : MonoBehaviour {
 	public NavMeshAgent agent;
 	public int targetChecker;
 	public int waitTimer;
+<<<<<<< HEAD
 	public GameObject _SCRIPT;
 	public FleePacman fleePacman;
 	public Vector3 startpos;
 	// Use this for initialization
 	void Start () {
 		startpos = transform.position;
+=======
+	public float[] startCoords;
+	// Use this for initialization
+	void Start () {
+		startCoords[0] = transform.position.x;
+		startCoords[1] = transform.position.y;
+		startCoords[2] = transform.position.z;
+>>>>>>> origin/Thomas_Branch
 		agent = GetComponent<NavMeshAgent>();
 		fleePacman = _SCRIPT.GetComponent<FleePacman>();
 		InvokeRepeating("setTarget",waitTimer,6);
@@ -48,5 +57,9 @@ public class NavmeshTarget : MonoBehaviour {
 		if(transform.position == agent.destination && hasStarted == true){
 			setTarget ();
 		}
+	}
+
+	void PacmanCaught(){
+		transform.position = new Vector3(startCoords[0],startCoords[1],startCoords[2]);
 	}
 }

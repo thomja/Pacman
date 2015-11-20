@@ -1,13 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveScript.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="Assets\Scripts\FleePacman.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Hitbox.cs" Line="9" Column="11" />
       <File FileName="Assets\Scripts\MoveScript.cs" Line="17" Column="17" />
       <File FileName="Assets\Scripts\GlobalPointScript.cs" Line="5" Column="2" />
       <File FileName="Assets\Scripts\NavmeshTarget.cs" Line="38" Column="65" />
       <File FileName="Assets\Scripts\FoodEatingScript.cs" Line="1" Column="1" />
+=======
+      <File FileName="Assets\Scripts\MoveScript.cs" Line="50" Column="4" />
+      <File FileName="Assets\Scripts\NavmeshTarget.cs" Line="27" Column="3" />
+      <File FileName="Assets\Scripts\GlobalPointScript.cs" Line="21" Column="3" />
+>>>>>>> origin/Thomas_Branch
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
