@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class MoveScript : MonoBehaviour {
+	public bool canRestart;
 	public int myDirection = 0;
 	public float speed = 1;
 	public bool moveForward;
@@ -10,8 +11,11 @@ public class MoveScript : MonoBehaviour {
 	public GameObject[] myBoxes;
 	public BoxChecker[] myBoxCheckers;
 	public float[] startCoords;
+	public GUIStyle style;
+	public string failString;
 	// Use this for initialization
 	void Start () {
+		failString = "";
 		startCoords[0] = transform.position.x;
 		startCoords[1] = transform.position.y;
 		startCoords[2] = transform.position.z;
@@ -44,7 +48,7 @@ public class MoveScript : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.W)){
 			moveForward = true;
 		}
-		if(Input.GetKeyDown(KeyCode.S)){
+		if(Input.GetKeyDown(KeyCode.S) && pointScript.lives > 0){
 			transform.Rotate(0f, 180f, 0f);
 			myDirection = 0;
 		}
@@ -56,6 +60,15 @@ public class MoveScript : MonoBehaviour {
 			myDirection = 1;
 			CheckTurn();
 		}
+		if(Input.GetKey(KeyCode.Space)){
+			if(canRestart == true){
+				canRestart = false;
+				Time.timeScale = 1;
+				pointScript.lives = 3;
+				pointScript.score = 0;
+				failString = "";
+			}
+		}
 	}
 
 	void OnTriggerEnter(Collider Coll){
@@ -65,6 +78,11 @@ public class MoveScript : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation(Vector3.forward);
 			moveForward = false;
 			pointScript.resetAllGhosts();
+			if(pointScript.lives <= 0){
+				failString = "Game over, press space to restart!";
+				canRestart = true;
+				Time.timeScale = 0;
+			}
 		} else if (Coll.gameObject.tag == "SuperPill" && this.gameObject.name == "Pacman"){
 			Debug.Log ("Initializing FleeStage");
 			hasPower = true;
@@ -75,5 +93,9 @@ public class MoveScript : MonoBehaviour {
 				}
 			}
 		}
+	}
+	void OnGUI()
+	{
+		GUI.Label(new Rect(Screen.width/2, Screen.height/2, 200, 50), failString, style);        
 	}
 }

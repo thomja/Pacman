@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\FleePacman.cs" Line="9" Column="34" />
+      <File FileName="Assets\Scripts\FleePacman.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Hitbox.cs" Line="9" Column="11" />
-      <File FileName="Assets\Scripts\MoveScript.cs" Line="66" Column="24" />
-      <File FileName="Assets\Scripts\GlobalPointScript.cs" Line="23" Column="9" />
-      <File FileName="Assets\Scripts\NavmeshTarget.cs" Line="20" Column="42" />
-      <File FileName="Assets\Scripts\FoodEatingScript.cs" Line="20" Column="78" />
+      <File FileName="Assets\Scripts\MoveScript.cs" Line="17" Column="17" />
+      <File FileName="Assets\Scripts\GlobalPointScript.cs" Line="5" Column="2" />
+      <File FileName="Assets\Scripts\NavmeshTarget.cs" Line="38" Column="65" />
+      <File FileName="Assets\Scripts\FoodEatingScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
