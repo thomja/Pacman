@@ -1,41 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class Life : MonoBehaviour
+public class Liv : MonoBehaviour
 {
-    private int points, lives;
-    public Text pointText, livesText, Life1Text, Life2Text, Life3Text, Life4Text;
-    private GameObject Pill, Fruit;
-    static bool gameover, extraLife, loselife1, loselife2, loselife3, loselife4;
+    public static int lives, points;
     public Image Life1, Life2, Life3, Life4;
-
+    static bool gameover, extraLife, loselife1, loselife2, loselife3, loselife4;
 
     void Awake()
     {
+        loselife1 = false;
+        loselife2 = false;
+        loselife3 = false;
+        loselife4 = false;
+        gameover = false;
         extraLife = true;
         lives = 3;
-        points = 0;
-        SetpointText();
     }
-    void SetpointText()
+    
+    public void Update()
     {
-        pointText.text = "Spelare 1:   " + points.ToString();
-        livesText.text = "Life: " + lives.ToString();
-        Life1Text.text = "Life: " + lives.ToString();
-        Life2Text.text = "Life: " + lives.ToString();
-        Life3Text.text = "Life: " + lives.ToString();
-        Life4Text.text = "Life: " + lives.ToString();
-    }
-
-    void Update()
-    {
-        if (lives <= 0) // Om man inte har några liv så blir gameover true
+        if (lives == 0) // Om man inte har några liv så blir gameover true
         {
             gameover = true;
-        }
-        if (gameover) // Laddar en ny scen som heter Highscore
-        {
-            Application.LoadLevel("Highscore");
         }
         if () // Förutsättning för att förlora första livet
         {
@@ -43,7 +31,6 @@ public class Life : MonoBehaviour
             {
                 lives--;
                 loselife1 = true;
-                SetpointText();
             }
         }
         if () // Förutsättning för att förlora andra livet
@@ -52,16 +39,14 @@ public class Life : MonoBehaviour
             {
                 lives--;
                 loselife2 = true;
-                SetpointText();
             }
         }
-        if (lives == 3) // Förutsättning för att förlora tredje livet
+        if () // Förutsättning för att förlora tredje livet
         {
             if (loselife3 == false)
             {
                 lives--;
                 loselife3 = true;
-                SetpointText();
             }
         }
         if () // Förutsättning för att förlora fjärde livet
@@ -70,7 +55,6 @@ public class Life : MonoBehaviour
             {
                 lives--;
                 loselife4 = true;
-                SetpointText();
             }
         }
 
@@ -80,7 +64,6 @@ public class Life : MonoBehaviour
             {
                 lives++;
                 extraLife = false;
-                SetpointText();
             }
 
         }
@@ -90,7 +73,6 @@ public class Life : MonoBehaviour
             Life2.enabled = false;
             Life3.enabled = false;
             Life4.enabled = false;
-            SetpointText();
         }
         if (lives == 2) // Om man har två liv så visas Image2
         {
@@ -98,7 +80,6 @@ public class Life : MonoBehaviour
             Life2.enabled = true;
             Life3.enabled = false;
             Life4.enabled = false;
-            SetpointText();
         }
         if (lives == 3) // Om man har tre liv så visas Image3
         {
@@ -106,7 +87,6 @@ public class Life : MonoBehaviour
             Life2.enabled = false;
             Life3.enabled = true;
             Life4.enabled = false;
-            SetpointText();
         }
         if (lives == 4) // Om man har fyra liv så visas Image4
         {
@@ -114,23 +94,6 @@ public class Life : MonoBehaviour
             Life2.enabled = false;
             Life3.enabled = false;
             Life4.enabled = true;
-            SetpointText();
-        }
-    }
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag == "Pill")
-        {
-            points += 10;
-            Destroy(col.gameObject);
-            SetpointText();
-
-        }
-        if (col.gameObject.tag == "Fruit")
-        {
-            points += 500;
-            Destroy(col.gameObject);
-            SetpointText();
         }
     }
 }
